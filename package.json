@@ -15,7 +15,8 @@
     "build": "react-scripts build",
     "test": "jest --verbose",
     "test:coverage": "jest --verbose --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls"
   },
   "eslintConfig": {
     "extends": "react-app"
