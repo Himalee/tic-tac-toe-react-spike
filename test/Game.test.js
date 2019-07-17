@@ -21,3 +21,10 @@ it('displays 9 cells for a 3x3 board', () => {
   const wrapper = Enzyme.shallow(<Game />);
   expect(wrapper.find(Cell)).toHaveLength(9);
 });
+
+it('ability to mark board with X on click', () => {
+  const wrapper = Enzyme.mount(<Game />);
+  wrapper.find('[className="button"]').first().simulate('click');
+  expect(wrapper.state().cells).toEqual(['X', "", "", "", "", "", "", "", ""]);
+  wrapper.unmount();
+});
