@@ -22,9 +22,18 @@ it('displays 9 cells for a 3x3 board', () => {
   expect(wrapper.find(Cell)).toHaveLength(9);
 });
 
-it('ability to mark board with X on click', () => {
+it('ability to mark board with X on first click', () => {
   const wrapper = Enzyme.mount(<Game />);
   wrapper.find('[className="button"]').first().simulate('click');
   expect(wrapper.state().grid).toEqual(['X', "", "", "", "", "", "", "", ""]);
+  wrapper.unmount();
+});
+
+it('switch marks when marking the board', () => {
+  const wrapper = Enzyme.mount(<Game />);
+  wrapper.find('[className="button"]').first().simulate('click');
+  wrapper.find('[className="button"]').at(1).simulate('click');
+  wrapper.find('[className="button"]').at(2).simulate('click');
+  expect(wrapper.state().grid).toEqual(['X', "O", "X", "", "", "", "", "", ""]);
   wrapper.unmount();
 });

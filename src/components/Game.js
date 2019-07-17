@@ -9,9 +9,29 @@ export class Game extends Component {
     };
   }
 
+  determineMark() {
+    var numberOfX = this.countMark('X');
+    var numberOfO = this.countMark('O');
+    if ( numberOfX > numberOfO) {
+      return 'O'
+    } else {
+        return 'X'
+    }
+  }
+
+  countMark(mark) {
+    var count = 0;
+    var currentGrid = this.state.grid;
+    for(var i = 0; i < currentGrid.length; ++i){
+      if(currentGrid[i] === mark)
+        count++;
+    }
+    return count;
+  }
+
   handleClick(gridIndex) {
     const grid = this.state.grid.slice();
-    grid[gridIndex] = 'X';
+    grid[gridIndex] = this.determineMark();
     this.setState({grid: grid});
   }
 
