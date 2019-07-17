@@ -25,6 +25,6 @@ it('displays 9 cells for a 3x3 board', () => {
 it('ability to mark board with X on click', () => {
   const wrapper = Enzyme.mount(<Game />);
   wrapper.find('[className="button"]').first().simulate('click');
-  expect(wrapper.state().cells).toEqual(['X', "", "", "", "", "", "", "", ""]);
+  expect(wrapper.state().grid).toEqual(['X', "", "", "", "", "", "", "", ""]);
   wrapper.unmount();
 });

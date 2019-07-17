@@ -5,20 +5,20 @@ export class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cells: Array(9).fill(""),
+      grid: Array(9).fill(""),
     };
   }
 
-  handleClick(i) {
-    const cells = this.state.cells.slice();
-    cells[i] = 'X';
-    this.setState({cells: cells});
+  handleClick(gridIndex) {
+    const grid = this.state.grid.slice();
+    grid[gridIndex] = 'X';
+    this.setState({grid: grid});
   }
 
-  renderCell(i) {
+  renderCell(gridIndex) {
     return <Cell
-    cellLabel={this.state.cells[i]}
-    onClick={() => this.handleClick(i)} />
+    cellLabel={this.state.grid[gridIndex]}
+    onClick={() => this.handleClick(gridIndex)} />
   }
 
   render() {
