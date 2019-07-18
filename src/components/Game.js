@@ -19,10 +19,10 @@ export class Game extends Component {
   countMark(mark) {
     let count = 0;
     let currentGrid = this.state.grid;
-    for(let i = 0; i < currentGrid.length; ++i){
-      if(currentGrid[i] === mark)
+    currentGrid.forEach(function(cell) {
+      if(cell === mark)
         count++;
-    }
+    });
     return count;
   }
 
