@@ -13,11 +13,7 @@ export class Game extends Component {
   determineMark() {
     let numberOfX = this.countMark(cellValue.X);
     let numberOfO = this.countMark(cellValue.O);
-    if ( numberOfX > numberOfO) {
-      return cellValue.O
-    } else {
-        return cellValue.X
-    }
+    return (numberOfX > numberOfO) ? cellValue.O : cellValue.X
   }
 
   countMark(mark) {
