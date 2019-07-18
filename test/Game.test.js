@@ -18,8 +18,9 @@ it('displays welcome message', () => {
 });
 
 it('displays 9 cells for a 3x3 board', () => {
-  const wrapper = Enzyme.shallow(<Game />);
+  const wrapper = Enzyme.mount(<Game />);
   expect(wrapper.find(Cell)).toHaveLength(9);
+  wrapper.unmount();
 });
 
 it('ability to mark board with X on first click', () => {
