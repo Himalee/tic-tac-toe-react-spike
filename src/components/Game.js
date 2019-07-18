@@ -11,8 +11,8 @@ export class Game extends Component {
   }
 
   determineMark() {
-    var numberOfX = this.countMark(cellValue.X);
-    var numberOfO = this.countMark(cellValue.O);
+    let numberOfX = this.countMark(cellValue.X);
+    let numberOfO = this.countMark(cellValue.O);
     if ( numberOfX > numberOfO) {
       return cellValue.O
     } else {
@@ -21,9 +21,9 @@ export class Game extends Component {
   }
 
   countMark(mark) {
-    var count = 0;
-    var currentGrid = this.state.grid;
-    for(var i = 0; i < currentGrid.length; ++i){
+    let count = 0;
+    let currentGrid = this.state.grid;
+    for(let i = 0; i < currentGrid.length; ++i){
       if(currentGrid[i] === mark)
         count++;
     }
