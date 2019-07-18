@@ -1,21 +1,22 @@
 import React, { Component }  from 'react';
 import {Cell} from './Cell'
+import * as cellValue from '../cellValue';
 
 export class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      grid: Array(9).fill(""),
+      grid: Array(9).fill(cellValue.EMPTY),
     };
   }
 
   determineMark() {
-    var numberOfX = this.countMark('X');
-    var numberOfO = this.countMark('O');
+    var numberOfX = this.countMark(cellValue.X);
+    var numberOfO = this.countMark(cellValue.O);
     if ( numberOfX > numberOfO) {
-      return 'O'
+      return cellValue.O
     } else {
-        return 'X'
+        return cellValue.X
     }
   }
 
