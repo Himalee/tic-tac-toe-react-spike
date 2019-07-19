@@ -38,3 +38,30 @@ it('switch marks when marking the board', () => {
   expect(wrapper.state().grid).toEqual(['X', "O", "X", "", "", "", "", "", ""]);
   wrapper.unmount();
 });
+
+it('marks board until draw', () => {
+  const wrapper = Enzyme.mount(<Game />);
+  wrapper.setState({grid: ["X", "X", "O", "O", "O", "X", "X", "O", ""] });
+  wrapper.find('[className="button"]').at(8).simulate('click');
+  expect(wrapper.state().isBoardFull).toEqual(true);
+  expect(wrapper.contains(<h2>It's a draw!</h2>)).toEqual(true);
+  wrapper.unmount();
+});
+
+it('marks board until player X wins', () => {
+  const wrapper = Enzyme.mount(<Game />);
+  wrapper.setState({grid: ["X", "X", "", "", "", "", "O", "", "O"] });
+  wrapper.find('[className="button"]').at(2).simulate('click');
+  expect(wrapper.state().isThereAWinner).toEqual(true);
+  expect(wrapper.contains(<h2>Winner!</h2>)).toEqual(true);
+  wrapper.unmount();
+});
+
+it('marks board until player O wins', () => {
+  const wrapper = Enzyme.mount(<Game />);
+  wrapper.setState({grid: ["X", "X", "", "", "", "X", "O", "", "O"] });
+  wrapper.find('[className="button"]').at(7).simulate('click');
+  expect(wrapper.state().isThereAWinner).toEqual(true);
+  expect(wrapper.contains(<h2>Winner!</h2>)).toEqual(true);
+  wrapper.unmount();
+});
