@@ -62,7 +62,7 @@ export class Game extends Component {
     this.setState({isThereAWinner: this.isThereAWinner(grid), isBoardFull: this.isBoardFull(grid)});
   }
 
-  render() {
+  gameStatus() {
     let status;
     const isThereAWinner = this.state.isThereAWinner;
     const isBoardFull = this.state.isBoardFull;
@@ -73,13 +73,17 @@ export class Game extends Component {
     } else {
       status = GameResult.CONTINUE_PLAYING;
     }
+    return status;
+  }
+
+  render() {
     return (
       <div>
       <h1>Welcome to Tic Tac Toe!</h1>
       <Board
       cells = {this.state.grid}
       handleClick = {gridIndex => this.handleClick(gridIndex)} />
-      <h2>{status}</h2>
+      <h2>{this.gameStatus()}</h2>
       </div>
     );
   }
