@@ -58,8 +58,7 @@ export class Game extends Component {
   handleClick(gridIndex) {
     const grid = this.state.grid.slice();
     grid[gridIndex] = this.determineMark();
-    this.setState({grid: grid});
-    this.setState({isThereAWinner: this.isThereAWinner(grid), isBoardFull: this.isBoardFull(grid)});
+    this.setState({grid: grid, isThereAWinner: this.isThereAWinner(grid), isBoardFull: this.isBoardFull(grid)});
   }
 
   gameStatus() {
