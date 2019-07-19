@@ -52,7 +52,7 @@ export class Game extends Component {
 
   isBoardFull(grid) {
     let numberOfEmptyCells = this.countMark(cellValue.EMPTY, grid);
-    return (numberOfEmptyCells === 0) ? true : false
+    return numberOfEmptyCells === 0;
   }
 
   handleClick(gridIndex) {
