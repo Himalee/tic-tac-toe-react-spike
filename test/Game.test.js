@@ -27,6 +27,7 @@ it('ability to mark board with X on first click', () => {
   const wrapper = Enzyme.mount(<Game />);
   wrapper.find('[className="button"]').first().simulate('click');
   expect(wrapper.state().grid).toEqual(['X', "", "", "", "", "", "", "", ""]);
+  expect(wrapper.contains(<h2>Keep playing...</h2>)).toEqual(true);
   wrapper.unmount();
 });
 
