@@ -1,13 +1,13 @@
 import React, { Component }  from 'react';
 import {Board} from './Board'
-import * as CellValue from '../CellValue';
+import * as cellValue from '../cellValue';
 import * as GameResult from '../GameResult';
 
 export class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      grid: Array(9).fill(CellValue.EMPTY),
+      grid: Array(9).fill(cellValue.EMPTY),
       isThereAWinner: false,
       isBoardFull: false
     };
@@ -28,16 +28,16 @@ export class Game extends Component {
     winningLines.forEach(function(line) {
       const [a, b, c] = line;
       let potentialWinningLine = [grid[a], grid[b], grid[c]]
-      if (potentialWinningLine.every( cell => cell === potentialWinningLine[0] && cell !== CellValue.EMPTY))
+      if (potentialWinningLine.every( cell => cell === potentialWinningLine[0] && cell !== cellValue.EMPTY))
         winnerFound = true;
       });
     return winnerFound;
     }
 
   determineMark() {
-    let numberOfX = this.countMark(CellValue.X, this.state.grid);
-    let numberOfO = this.countMark(CellValue.O, this.state.grid);
-    return (numberOfX > numberOfO) ? CellValue.O : CellValue.X
+    let numberOfX = this.countMark(cellValue.X, this.state.grid);
+    let numberOfO = this.countMark(cellValue.O, this.state.grid);
+    return (numberOfX > numberOfO) ? cellValue.O : cellValue.X
   }
 
   countMark(mark, grid) {
@@ -51,7 +51,7 @@ export class Game extends Component {
   }
 
   isBoardFull(grid) {
-    let numberOfEmptyCells = this.countMark(CellValue.EMPTY, grid);
+    let numberOfEmptyCells = this.countMark(cellValue.EMPTY, grid);
     return (numberOfEmptyCells === 0) ? true : false
   }
 
